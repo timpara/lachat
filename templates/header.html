@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  <title>La-Chat</title>  
+  
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/cover.css') }}" rel="stylesheet">
+  <link rel="shortcut icon" href="{{ url_for("static", filename="images/ios7-pulse.png") }}">
+</head>
+
+
+  <body class="text-left">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          
+          <nav class="nav nav-masthead justify-content-center">
+          
+            <a class="nav-link {{ header_1 }}" href="/">Home</a>
+             {% if session.logged_in %}
+            <a class="nav-link {{ header_5 }}" href="/dashboard/">Dashboard</a>
+            <a class="nav-link {{ header_2 }}" href="/logout/">Logout</a>
+            {% else %}
+            <a class="nav-link {{ header_3 }}" href="/login/">Login</a>
+            <a class="nav-link {{ header_4 }}" href="/register/">Register</a>          
+            {% endif %}
+        </nav>
+        </div>
+      </header>
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+      {{message}}
+      </div>
+    {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+ <div  style="min-height:100% width:80%">
+{% block body %} {% endblock %}    
+</div>
+
+
+    
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <span class="text-muted"> &copy; T. Paraskevopoulos c/o TU Dortmund </span>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script  src="{{ url_for('static', filename='js/jquery-slim.min.js') }}"><\/script>')</script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends "header.html" %}
+    <!-- Custom styles for this template -->
+{% block body %}
+
+
+ {% if session.logged_in %}
+
+<main role="main" class="inner cover">
+        <h1 class="cover-heading">Hello {{ session.username }}.</h1>
+        <p class="lead">Please join the chatroom</p>
+        <p class="lead">
+          <a href="/lachat/" class="btn btn-lg btn-secondary">La-Chat</a>
+        </p>
+    
+</main>
+
+{% else %}
+<main role="main" class="inner cover">
+        <h1 class="cover-heading">Please login first.</h1>
+</main>
+{% endif %}
+
+{% endblock %}
+
+

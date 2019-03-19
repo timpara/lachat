@@ -1,0 +1,41 @@
+{% extends "header.html" %}
+
+{% block body %}
+
+
+
+	<h4>Persönliche Daten</h4>
+	
+		{% from "_formhelpers.html" import render_field %}
+
+		<form method=post action="/register/">
+			<div class="form-row">
+			<div class="form-group col-md-6">
+			{{render_field(form.username)}}
+			</div>
+			<div class="form-group col-md-6">
+			{{render_field(form.email)}}
+			</div>
+			</div>
+	  		<div class="form-row">
+    		<div class="form-group col-md-6">
+			{{render_field(form.password)}}
+			</div>
+			<div class="form-group col-md-6">
+			{{render_field(form.confirm)}}
+			</div>
+			</div>
+			{{render_field(form.accept_tos)}}
+			<div class="form-row">
+			</div>
+			<p><input type=submit value=Register></p>
+		</form>			
+		{% if error %}
+		
+		{% endif %}
+
+
+
+
+
+{% endblock %}
